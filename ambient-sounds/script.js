@@ -3,37 +3,37 @@ const soundsData = [
         id: 'rain',
         name: 'Rain',
         icon: 'bx-cloud-rain',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/7/75/Rain_and_Thunder.ogg'
+        url: 'https://cdn.freesound.org/previews/34/34065_28216-lq.mp3'
     },
     {
         id: 'cafe',
         name: 'Cafe',
         icon: 'bx-coffee',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Small_crowd_talking.ogg'
+        url: 'https://cdn.freesound.org/previews/37/37618_52655-lq.mp3'
     },
     {
         id: 'birds',
         name: 'Forest Birds',
         icon: 'bx-leaf',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Birds_recording_2020.ogg'
+        url: 'https://cdn.freesound.org/previews/116/116089_2026709-lq.mp3'
     },
     {
         id: 'fire',
         name: 'Fireplace',
         icon: 'bx-cookie', // closest flame-like cozy icon, or bxs-hot
-        url: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/Campfire.ogg'
+        url: 'https://cdn.freesound.org/previews/813/813328_11606594-lq.mp3'
     },
     {
         id: 'wind',
         name: 'Wind',
         icon: 'bx-wind',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/0/00/Wind-noise.ogg'
+        url: 'https://cdn.freesound.org/previews/830/830253_11606594-lq.mp3'
     },
     {
         id: 'waves',
         name: 'Waves',
         icon: 'bx-water',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Waves_crashing_against_rocks.ogg'
+        url: 'https://cdn.freesound.org/previews/157/157880_177850-lq.mp3'
     }
 ];
 
