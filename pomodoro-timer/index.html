@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Flow | Modern Pomodoro</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 幾何学的な背景 -->
+    <div class="background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- メインコンテナ -->
+    <main class="container">
+        <!-- ヘッダー -->
+        <header>
+            <h1 class="logo"><i class='bx bx-hive'></i> Focus Flow</h1>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- タイマーセクション (Left Panel) -->
+            <section class="timer-section glass-panel">
+                <div class="mode-toggle">
+                    <button id="btn-work" class="mode-btn active">Work <span>(25m)</span></button>
+                    <button id="btn-break" class="mode-btn">Break <span>(5m)</span></button>
+                </div>
+
+                <div class="timer-display-wrapper">
+                    <!-- SVGの進捗リング -->
+                    <svg class="progress-ring" width="300" height="300">
+                        <!-- 背景用リング -->
+                        <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="12"
+                            fill="transparent" r="135" cx="150" cy="150" />
+                        <!-- 動的な進捗リング -->
+                        <circle id="progress-ring" class="progress-ring__circle" stroke="url(#gradient)"
+                            stroke-width="12" fill="transparent" r="135" cx="150" cy="150" />
+                        <!-- グラデーション定義 -->
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="var(--accent-1)" />
+                                <stop offset="100%" stop-color="var(--accent-2)" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <!-- 時間表示 -->
+                    <div class="time-display" id="time-display">25:00</div>
+                </div>
+
+                <div class="controls">
+                    <button id="btn-start" class="control-btn play">
+                        <i class='bx bx-play'></i>
+                    </button>
+                    <button id="btn-pause" class="control-btn pause hidden">
+                        <i class='bx bx-pause'></i>
+                    </button>
+                    <button id="btn-reset" class="control-btn reset">
+                        <i class='bx bx-reset'></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- タスクセクション (Right Panel) -->
+            <section class="tasks-section glass-panel">
+                <div class="tasks-header">
+                    <h2>Today's Tasks</h2>
+                    <span id="task-stats" class="task-stats">0/0</span>
+                </div>
+
+                <form id="task-form" class="task-input-form">
+                    <input type="text" id="task-input" placeholder="What are you working on?" required
+                        autocomplete="off">
+                    <button type="submit" class="add-task-btn"><i class='bx bx-plus'></i></button>
+                </form>
+
+                <ul id="task-list" class="task-list">
+                    <!-- タスクはJSでここに動的に追加されます -->
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- タスク完了時の紙吹雪キャンバス（見えないようにオーバーレイ） -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

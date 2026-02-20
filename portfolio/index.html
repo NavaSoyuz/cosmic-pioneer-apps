@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="モダンなフロントエンドエンジニアのポートフォリオ">
+    <title>Kenji Doe | Frontend Developer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 幾何学的な背景要素 -->
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header>
+        <div class="logo">KD.</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ヒーローセクション -->
+        <section id="home" class="hero">
+            <div class="hero-content fade-in">
+                <p class="subtitle">Hi, my name is</p>
+                <h1 class="title">Kenji Doe</h1>
+                <h2 class="role">Building Digital Experiences.</h2>
+                <p class="description">
+                    モダンなWeb技術を駆使し、魅力的でパフォーマンスの高いユーザーインターフェースを構築するフロントエンドエンジニアです。
+                    美しさと機能性を両立させたデザインをご提供します。
+                </p>
+                <a href="#projects" class="btn primary-btn">最近の成果を見る</a>
+            </div>
+        </section>
+
+        <!-- スキルセット -->
+        <section id="skills" class="section">
+            <h2 class="section-title fade-in">My Skillset</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <i class='bx bxl-react'></i>
+                    <h3>React.js</h3>
+                    <p>コンポーネント指向のUI設計と状態管理</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class='bx bxl-vuejs'></i>
+                    <h3>Vue.js</h3>
+                    <p>リアクティブなフロントエンド開発</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class='bx bxl-typescript'></i>
+                    <h3>TypeScript</h3>
+                    <p>堅牢で保守性の高いコードの記述</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class='bx bxl-figma'></i>
+                    <h3>Figma</h3>
+                    <p>高精度なUI/UXプロトタイピング</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class='bx bxl-tailwind-css'></i>
+                    <h3>CSS Frameworks</h3>
+                    <p>レスポンシブで素早いスタイリング</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <i class='bx bx-mobile'></i>
+                    <h3>Responsive Design</h3>
+                    <p>あらゆるデバイスに最適化された表示</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- プロジェクト履歴 -->
+        <section id="projects" class="section">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card fade-in">
+                    <div class="project-img placeholder-bg1"></div>
+                    <div class="project-info">
+                        <h3>AI Analytics Dashboard</h3>
+                        <p>大量のデータをリアルタイムに可視化し、インタラクティブに操作できるエンタープライズ向けダッシュボード。</p>
+                        <div class="tags">
+                            <span>React</span><span>Chart.js</span><span>Firebase</span>
+                        </div>
+                        <a href="#" class="project-link">詳細を見る &rarr;</a>
+                    </div>
+                </article>
+                <article class="project-card fade-in">
+                    <div class="project-img placeholder-bg2"></div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>洗練されたUIと高速なページ遷移を実現した、次世代のオンラインショッピングプラットフォーム。</p>
+                        <div class="tags">
+                            <span>Next.js</span><span>Stripe</span><span>Tailwind</span>
+                        </div>
+                        <a href="#" class="project-link">詳細を見る &rarr;</a>
+                    </div>
+                </article>
+                <article class="project-card fade-in">
+                    <div class="project-img placeholder-bg3"></div>
+                    <div class="project-info">
+                        <h3>NFT Marketplace</h3>
+                        <p>Web3技術を活用し、デジタルアセットの取引をシームレスに行うためのモダンなDApp。</p>
+                        <div class="tags">
+                            <span>Vue 3</span><span>Web3.js</span><span>Node.js</span>
+                        </div>
+                        <a href="#" class="project-link">詳細を見る &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 連絡先フォーム -->
+        <section id="contact" class="section">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <p class="contact-desc fade-in">新しいプロジェクトのご相談や、技術的なご質問など、お気軽にご連絡ください。あなたのアイデアを形にするお手伝いをします。</p>
+            <form class="contact-form fade-in" onsubmit="event.preventDefault()">
+                <div class="form-group">
+                    <label for="name">お名前</label>
+                    <input type="text" id="name" placeholder="山田 太郎" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス</label>
+                    <input type="email" id="email" placeholder="hello@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">メッセージ</label>
+                    <textarea id="message" rows="5" placeholder="ご用件を入力してください..." required></textarea>
+                </div>
+                <button type="submit" class="btn primary-btn submit-btn">送信する</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kenji Doe. Designed & Built with ❤️ and Coffee.</p>
+        <div class="social-links">
+            <a href="#"><i class='bx bxl-github'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-linkedin-square'></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

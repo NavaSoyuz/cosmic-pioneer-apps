@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Weather Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Boxicons (Weather Icons) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-sunny"> <!-- デフォルトは晴れテーマ -->
+    <div class="overlay"></div> <!-- 背景のブレンド用オーバレイ -->
+
+    <div class="container">
+        <!-- 検索バー -->
+        <header class="search-section">
+            <h1 class="app-title"><i class='bx bx-landscape'></i> MeteoDash</h1>
+            <form id="search-form" class="search-box">
+                <input type="text" id="city-input" placeholder="Search for a city (e.g., Tokyo, New York)..."
+                    autocomplete="off" required>
+                <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+            </form>
+            <div id="error-message" class="error-msg hidden">City not found. Please try again.</div>
+        </header>
+
+        <!-- メインダッシュボード -->
+        <main class="dashboard skeleton" id="dashboard">
+            <!-- 現在の天気 -->
+            <section class="current-weather glass-card">
+                <div class="location-info">
+                    <h2 id="city-name">Tokyo, JP</h2>
+                    <p id="current-date">Fetching data...</p>
+                </div>
+
+                <div class="weather-main">
+                    <div class="weather-icon-lg" id="current-icon">
+                        <i class='bx bx-loader-alt bx-spin'></i>
+                    </div>
+                    <div class="temperature">
+                        <span id="current-temp">--</span>°C
+                    </div>
+                    <p class="condition" id="current-condition">Loading...</p>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <i class='bx bx-droplet'></i>
+                        <div class="detail-text">
+                            <span class="label">Humidity</span>
+                            <span class="value" id="current-humidity">--%</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class='bx bx-wind'></i>
+                        <div class="detail-text">
+                            <span class="label">Wind Speed</span>
+                            <span class="value" id="current-wind">-- km/h</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 週間予報 -->
+            <section class="forecast glass-card">
+                <h3>7-Day Forecast</h3>
+                <div class="forecast-list" id="forecast-list">
+                    <!-- JSで動的に追加されます -->
+                    <div class="forecast-item">
+                        <span>Loading...</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ローディングスピナー -->
+    <div id="loader" class="loader-overlay hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

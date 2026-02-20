@@ -1,0 +1,558 @@
+:root {
+    /* Base Colors - Dark Mode Theme */
+    --bg-dark: #0f172a;
+    /* Deep Slate */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+
+    /* Accents for Work state */
+    --accent-1: #6366f1;
+    /* Indigo */
+    --accent-2: #ec4899;
+    /* Pink */
+
+    /* Accents for Break state */
+    --break-1: #10b981;
+    /* Emerald */
+    --break-2: #0ea5e9;
+    /* Sky Blue */
+
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(30, 41, 59, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
+    --font-main: 'Outfit', sans-serif;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    /* Smooth theme transition */
+    transition: var(--transition);
+}
+
+/* 状態（Break時）のテーマ切り替え用クラス */
+body.mode-break {
+    --accent-1: var(--break-1);
+    --accent-2: var(--break-2);
+}
+
+/* 動的な背景エフェクト（ぼかしの効いた色付きブロブ） */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
+
+.blob {
+    position: absolute;
+    filter: blur(80px);
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: drift 20s infinite alternate ease-in-out;
+    transition: background 1s ease;
+}
+
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--accent-1);
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--accent-2);
+    bottom: -20%;
+    right: -10%;
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    width: 300px;
+    height: 300px;
+    background: rgba(139, 92, 246, 0.4);
+    /* Purple overlay */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes drift {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+}
+
+/* メインコンテナ */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    z-index: 1;
+}
+
+/* ヘッダー */
+header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+/* コンテンツラッパー（グリッド） */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+    }
+}
+
+/* グラスパネル共通 */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--glass-glow);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ============== タイマーセクション ============== */
+.timer-section {
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* トグルボタン（Work / Break） */
+.mode-toggle {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    padding: 4px;
+    width: stretch;
+    max-width: 300px;
+    margin-bottom: 40px;
+    border: 1px solid var(--glass-border);
+}
+
+.mode-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 0;
+    border-radius: 26px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mode-btn span {
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-left: 4px;
+    opacity: 0.8;
+}
+
+.mode-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mode-btn:not(.active):hover {
+    color: var(--text-primary);
+}
+
+/* SVG リングタイマー表示 */
+.timer-display-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+    /* 12時の位置からスタートさせる */
+}
+
+.progress-ring__circle {
+    /* StrokeDasharray and offset are manipulated via JS */
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s linear;
+}
+
+/* デジタル時間表示 */
+.time-display {
+    font-size: 5rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -2px;
+    z-index: 10;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* コントローラー（再生・一時停止・リセット） */
+.controls {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid var(--glass-border);
+}
+
+.control-btn.play {
+    width: 70px;
+    height: 70px;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    border: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn.pause {
+    width: 70px;
+    height: 70px;
+    font-size: 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-2);
+    border: 2px solid var(--accent-2);
+}
+
+.control-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.control-btn.play:hover {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    box-shadow: 0 12px 32px rgba(var(--accent-1), 0.5);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* パルスアニメーション */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.timer-running .control-btn.pause {
+    animation: pulse 2s infinite;
+}
+
+/* ============== タスクセクション ============== */
+.tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.tasks-header h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.task-stats {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* 入力フォーム */
+.task-input-form {
+    display: flex;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+#task-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 16px 50px 16px 16px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+#task-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+#task-input:focus {
+    outline: none;
+    border-color: var(--accent-1);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.add-task-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-task-btn:hover {
+    background: var(--accent-1);
+    transform: rotate(90deg);
+}
+
+/* タスクリスト */
+.task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+/* Custom Scrollbar */
+.task-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.task-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    gap: 16px;
+    transition: var(--transition);
+    /* For entry animation */
+    animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* チェックボックス（カスタム） */
+.task-checkbox-container {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.task-checkbox-container input {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--text-secondary);
+    border-radius: 6px;
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-checkbox-container input:checked~.checkmark {
+    background: var(--accent-1);
+    border-color: var(--accent-1);
+}
+
+.checkmark::after {
+    content: "\eac9";
+    /* bx-check */
+    font-family: 'boxicons';
+    font-size: 1.2rem;
+    color: white;
+    opacity: 0;
+    transform: scale(0);
+    transition: var(--transition);
+}
+
+.task-checkbox-container input:checked~.checkmark::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* タスクテキスト */
+.task-text {
+    flex-grow: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+/* 削除ボタン */
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.task-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    color: #ef4444;
+    transform: scale(1.2);
+}
+
+/* ============== Confetti Canvas (紙吹雪) ============== */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+}
