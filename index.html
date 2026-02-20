@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Pioneer Apps Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --glass-bg: rgba(30, 41, 59, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at top left, #1e293b, #0b1120);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .emoji {
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .badge {
+            margin-top: 24px;
+            padding: 8px 16px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cosmic Pioneer Apps</h1>
+        <p class="subtitle">モダンなWebアプリケーション・コレクション</p>
+    </header>
+
+    <div class="grid">
+        <a href="./portfolio/" class="card">
+            <div class="emoji">👨‍💻</div>
+            <h2>Portfolio</h2>
+            <p>幾何学的な背景とスクロールアニメーションが特徴の、モダンな個人ポートフォリオサイト。</p>
+            <div class="badge">Open App &rarr;</div>
+        </a>
+
+        <a href="./weather-dashboard/" class="card">
+            <div class="emoji">⛅</div>
+            <h2>MeteoDash</h2>
+            <p>API連携で世界の天気を取得。天候に合わせてテーマカラーが動的に変化するダッシュボード。</p>
+            <div class="badge">Open App &rarr;</div>
+        </a>
+
+        <a href="./pomodoro-timer/" class="card">
+            <div class="emoji">⏱️</div>
+            <h2>Focus Flow</h2>
+            <p>美しいグラスモーフィズムUIと、達成感を演出する紙吹雪アニメーション付きタイマー。</p>
+            <div class="badge">Open App &rarr;</div>
+        </a>
+    </div>
+</body>
+
+</html>
