@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenSpace | Ambient Sounds for Focus</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-content">
+                <h1 class="logo"><i class='bx bx-leaf'></i> ZenSpace</h1>
+                <p class="subtitle">Find your focus.</p>
+            </div>
+            <button id="fullscreen-btn" class="icon-btn" title="Toggle Fullscreen">
+                <i class='bx bx-expand'></i>
+            </button>
+        </header>
+
+        <main class="grid-container" id="sound-grid">
+            <!-- Sounds will be injected here via JS -->
+        </main>
+
+        <!-- Controls / Master -->
+        <div class="master-controls">
+            <button id="master-pause" class="btn">Pause All</button>
+        </div>
+    </div>
+
+    <!-- Hidden audio elements will be created by JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

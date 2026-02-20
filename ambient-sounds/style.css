@@ -1,0 +1,258 @@
+:root {
+    /* Earthy Color Palette */
+    --bg-color: #e9e3d9;
+    /* Warm sand / light beige */
+    --card-bg: rgba(245, 240, 235, 0.4);
+    --card-border: rgba(140, 125, 111, 0.15);
+    --text-primary: #3d4a3e;
+    /* Deep olive green */
+    --text-secondary: #747f71;
+    /* Muted sage */
+
+    --accent: #6b8e6b;
+    /* Soft natural green */
+    --accent-hover: #547554;
+
+    --glass-shadow: 0 10px 30px rgba(61, 74, 62, 0.08);
+    --active-shadow: 0 0 0 2px var(--accent);
+
+    --font-main: 'Outfit', sans-serif;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s ease;
+    overflow-x: hidden;
+}
+
+/* Background Texture/Gradient Overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.5px;
+}
+
+.logo i {
+    color: var(--accent);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-top: 4px;
+    font-weight: 300;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.icon-btn:hover {
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.05);
+    transform: scale(1.1);
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+/* Sound Card */
+.sound-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: var(--transition);
+    user-select: none;
+}
+
+.sound-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--glass-shadow);
+    border-color: rgba(107, 142, 107, 0.3);
+    /* green tint border */
+}
+
+/* Active State */
+.sound-card.active {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: var(--glass-shadow), var(--active-shadow);
+}
+
+.sound-icon {
+    font-size: 3.5rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.sound-card.active .sound-icon {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.sound-name {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+/* Volume Slider */
+.volume-control {
+    width: 100%;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+    cursor: auto;
+    /* To prevent triggering card clip */
+}
+
+.sound-card.active .volume-control {
+    opacity: 1;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    height: 30px;
+    /* larger tap area */
+    display: flex;
+    align-items: center;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: rgba(116, 127, 113, 0.3);
+    border-radius: 2px;
+}
+
+.sound-card.active input[type=range]::-webkit-slider-runnable-track {
+    background: rgba(107, 142, 107, 0.4);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+    /* center thumb on track */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.sound-card.active input[type=range]::-webkit-slider-thumb {
+    background: var(--accent);
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+}
+
+/* Master Controls */
+.master-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+    padding: 12px 32px;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: var(--text-secondary);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        padding: 24px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
